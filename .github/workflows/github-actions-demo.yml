@@ -13,8 +13,8 @@ jobs:
           kubectl get pods -n kube-system
           echo "current-context:" $(kubectl config current-context)
           echo "environment-kubeconfig:" ${KUBECONFIG}
-          kubectl create -f test/namespace.yml
-          kubectl create -f test/secret.yml
+          kubectl create namespace mytest
+          kubectl create -f test/secret.yml -n mytest
           echo "Namespaces:"
           kubectl get ns
           echo "Secrets:"
