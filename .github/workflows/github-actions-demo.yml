@@ -4,6 +4,8 @@ on: [pull_request, push]
 jobs:
   kind:
     runs-on: ubuntu-latest
+    env:
+      NAMESPACE: mytest
     steps:
       - uses: actions/checkout@master
       - uses: engineerd/setup-kind@v0.5.0
@@ -14,11 +16,11 @@ jobs:
           echo "current-context:" $(kubectl config current-context)
           echo "environment-kubeconfig:" ${KUBECONFIG}
           kubectl create namespace mytest
-          kubectl create -f test/secret.yml -n mytest
+          kubectl create -f test/secret.yml -n ${NAMESPACE}
           echo "Namespaces:"
           kubectl get ns
           echo "Secrets:"
-          kubectl get secrets -n mytest
+          kubectl get secrets -n ${NAMESPACE}
           echo "mytest-secret:"
-          kubectl describe secret mytest-secret -n mytest
+          kubectl describe secret mytest-secret -n ${NAMESPACE}
 
