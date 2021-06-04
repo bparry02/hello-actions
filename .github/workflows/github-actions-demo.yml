@@ -19,4 +19,6 @@ jobs:
           kubectl get ns
           echo "Secrets:"
           kubectl get secrets -n mytest
+          echo "mytest-secret:"
+          kubectl describe mytest-secret -n mytest
 
