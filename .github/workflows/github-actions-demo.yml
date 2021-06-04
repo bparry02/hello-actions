@@ -20,5 +20,5 @@ jobs:
           echo "Secrets:"
           kubectl get secrets -n mytest
           echo "mytest-secret:"
-          kubectl describe mytest-secret -n mytest
+          kubectl describe secret mytest-secret -n mytest
 
